@@ -3,4 +3,10 @@ apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // JSR 330
+    implementation "javax.inject:javax.inject:$jsr_330"
+
+    // RxJava
+    implementation "io.reactivex:rxjava:$rx_java"
 }
