@@ -1,2 +1,3 @@
 rootProject.name='Caturday'
-include ':app'
+
+include ':app', ':data'
