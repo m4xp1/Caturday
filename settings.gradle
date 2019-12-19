@@ -1,3 +1,3 @@
-rootProject.name='Caturday'
+rootProject.name = 'Caturday'
 
-include ':app', ':data'
+include ':app', ':domain', ':data'

@@ -39,5 +39,6 @@ dependencies {
     implementation "io.reactivex:rxjava:$rx_java"
 
     // Modules
+    implementation project(path: ':domain')
     implementation project(path: ':data')
 }
