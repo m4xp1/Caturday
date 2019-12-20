@@ -1,10 +1,9 @@
 package one.xcorp.caturday.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import one.xcorp.caturday.R
 
-class CatsListActivity : AppCompatActivity() {
+class CatsListActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
