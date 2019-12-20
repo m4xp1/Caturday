@@ -8,7 +8,7 @@ import one.xcorp.caturday.domain.repository.CatsRepository
 import rx.Single
 import javax.inject.Inject
 
-class CatsRepositoryImpl @Inject constructor(
+internal class CatsRepositoryImpl @Inject constructor(
     private val catsNetworkSource: CatsNetworkSource
 ) : CatsRepository {
 

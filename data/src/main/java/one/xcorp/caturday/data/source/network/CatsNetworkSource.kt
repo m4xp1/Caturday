@@ -3,12 +3,11 @@ package one.xcorp.caturday.data.source.network
 import one.xcorp.caturday.data.source.network.CatsApi.Companion.PAGINATION_COUNT_HEADER
 import one.xcorp.caturday.data.source.network.dto.CatImageDto
 import one.xcorp.caturday.domain.entity.PageEntity
-import retrofit2.Retrofit
 import rx.Single
 import javax.inject.Inject
 import kotlin.math.ceil
 
-class CatsNetworkSource @Inject constructor(
+internal class CatsNetworkSource @Inject constructor(
     private val catsApi: CatsApi
 ) {
 

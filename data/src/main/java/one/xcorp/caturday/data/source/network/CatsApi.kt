@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import rx.Single
 
-interface CatsApi {
+internal interface CatsApi {
 
     @GET(IMAGES_SEARCH_METHOD)
     fun searchImages(limit: Int, page: Int, order: String): Single<Response<List<CatImageDto>>>
