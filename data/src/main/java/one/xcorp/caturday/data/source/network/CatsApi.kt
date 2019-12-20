@@ -12,11 +12,11 @@ interface CatsApi {
 
     companion object {
 
+        const val CATS_API_BASE_URL = "https://api.thecatapi.com/v1/"
+
         const val X_API_KEY_HEADER = "x-api-key"
         const val PAGINATION_COUNT_HEADER = "pagination-count"
 
-        private const val URL = "https://api.thecatapi.com/v1/"
-
-        private const val IMAGES_SEARCH_METHOD = URL + "images/search"
+        private const val IMAGES_SEARCH_METHOD = "images/search"
     }
 }

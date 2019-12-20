@@ -9,10 +9,8 @@ import javax.inject.Inject
 import kotlin.math.ceil
 
 class CatsNetworkSource @Inject constructor(
-    retrofit: Retrofit
+    private val catsApi: CatsApi
 ) {
-
-    private val catsApi by lazy { retrofit.create(CatsApi::class.java) }
 
     fun getCatsImages(limit: Int, page: Int, order: String): Single<PageEntity<CatImageDto>> =
         catsApi.searchImages(limit, page, order).map {
