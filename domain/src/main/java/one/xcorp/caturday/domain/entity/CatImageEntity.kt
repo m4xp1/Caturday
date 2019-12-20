@@ -1,6 +1,6 @@
 package one.xcorp.caturday.domain.entity
 
-data class CatEntity(
+data class CatImageEntity(
     val id: String,
     val image: String
 )
