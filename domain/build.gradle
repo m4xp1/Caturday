@@ -1,8 +1,17 @@
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //noinspection DifferentStdlibGradleVersion https://youtrack.jetbrains.com/issue/KT-33248
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     // JSR 330
     implementation "javax.inject:javax.inject:$jsr_330"
