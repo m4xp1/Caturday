@@ -21,6 +21,7 @@ interface DataComponent {
 
     fun catsRepository(): CatsRepository
 
+    @Component.Factory
     interface Factory {
 
         fun create(@BindsInstance @CatsApiKey catsApiKey: String): DataComponent
