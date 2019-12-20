@@ -1,4 +1,4 @@
-package one.xcorp.caturday.screen.cats.list.model
+package one.xcorp.caturday.model
 
 data class CatModel(
     val id: String,
