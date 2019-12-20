@@ -1,12 +1,13 @@
-package one.xcorp.caturday
+package one.xcorp.caturday.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import one.xcorp.caturday.R
 
-class MainActivity : AppCompatActivity() {
+class CatsListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_cats_list)
     }
 }
