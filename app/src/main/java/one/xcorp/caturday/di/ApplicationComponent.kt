@@ -18,6 +18,8 @@ import ru.cardsmobile.mw3.barch.presentation.di.scope.ApplicationScope
 )
 interface ApplicationComponent {
 
+    fun catsListComponent(): CatsListComponent
+
     @Component.Factory
     interface Factory {
 
