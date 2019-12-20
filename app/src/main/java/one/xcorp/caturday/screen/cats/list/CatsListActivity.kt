@@ -1,6 +1,7 @@
-package one.xcorp.caturday.activity
+package one.xcorp.caturday.screen.cats.list
 
 import android.os.Bundle
+import one.xcorp.caturday.activity.BaseActivity
 import one.xcorp.caturday.R
 
 class CatsListActivity : BaseActivity() {
