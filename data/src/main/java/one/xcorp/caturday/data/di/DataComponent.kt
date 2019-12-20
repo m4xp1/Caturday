@@ -19,7 +19,7 @@ import javax.inject.Singleton
 )
 interface DataComponent {
 
-    fun catsRepository(): CatsRepository
+    val catsRepository: CatsRepository
 
     @Component.Factory
     interface Factory {
