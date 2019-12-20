@@ -20,6 +20,9 @@ android {
         versionName "1.0"
     }
     buildTypes {
+        buildTypes.each {
+            it.buildConfigField 'String', 'CATS_API_KEY', cats_api_key
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

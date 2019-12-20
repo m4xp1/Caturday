@@ -22,9 +22,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="cats-api-key"
-            android:value="2db95639-de72-477f-9133-248b66d9cb3e" />
     </application>
 </manifest>
