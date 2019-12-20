@@ -10,6 +10,6 @@ class GetCatsImagesUseCase @Inject constructor(
     private val catsRepository: CatsRepository
 ) {
 
-    fun execute(limit: Int, page: Int): Single<PageEntity<CatImageEntity>> =
-        catsRepository.getCatsImages(limit, page)
+    fun execute(limit: Int, page: Int, order: String): Single<PageEntity<CatImageEntity>> =
+        catsRepository.getCatsImages(limit, page, order)
 }
