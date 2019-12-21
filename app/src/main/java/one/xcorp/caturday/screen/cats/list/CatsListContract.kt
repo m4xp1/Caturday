@@ -1,7 +1,7 @@
 package one.xcorp.caturday.screen.cats.list
 
-import one.xcorp.caturday.presenter.BasePresenter
 import one.xcorp.caturday.model.CatModel
+import one.xcorp.caturday.presenter.BasePresenter
 import one.xcorp.caturday.view.BaseView
 
 interface CatsListContract {
