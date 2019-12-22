@@ -1,6 +1,7 @@
 package one.xcorp.caturday.domain.usecase
 
 import one.xcorp.caturday.domain.entity.CatImageEntity
+import one.xcorp.caturday.domain.entity.OrderEntity
 import one.xcorp.caturday.domain.entity.PageEntity
 import one.xcorp.caturday.domain.repository.CatsRepository
 import rx.Single
@@ -10,6 +11,9 @@ class GetCatsImagesUseCase @Inject constructor(
     private val catsRepository: CatsRepository
 ) {
 
-    operator fun invoke(limit: Int, page: Int, order: String): Single<PageEntity<CatImageEntity>> =
-        catsRepository.getCatsImages(limit, page, order)
+    operator fun invoke(
+        limit: Int,
+        page: Int,
+        order: OrderEntity
+    ): Single<PageEntity<CatImageEntity>> = catsRepository.getCatsImages(limit, page, order)
 }
