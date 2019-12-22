@@ -18,11 +18,13 @@ internal class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGsonConverterFactory(gson: Gson) = GsonConverterFactory.create(gson)
+    fun provideGsonConverterFactory(gson: Gson): GsonConverterFactory =
+        GsonConverterFactory.create(gson)
 
     @Provides
     @Singleton
-    fun provideRxJavaCallAdapterFactory() = RxJavaCallAdapterFactory.create()
+    fun provideRxJavaCallAdapterFactory(): RxJavaCallAdapterFactory =
+        RxJavaCallAdapterFactory.create()
 
     @Provides
     fun provideHttpClientBuilder() = OkHttpClient.Builder()
@@ -31,7 +33,7 @@ internal class NetworkModule {
     fun provideRetrofitBuilder(
         gsonConverterFactory: GsonConverterFactory,
         rxJavaCallAdapterFactory: RxJavaCallAdapterFactory
-    ) = Retrofit.Builder()
+    ): Retrofit.Builder = Retrofit.Builder()
         .addConverterFactory(gsonConverterFactory)
         .addCallAdapterFactory(rxJavaCallAdapterFactory)
 }
