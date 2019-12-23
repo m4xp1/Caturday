@@ -16,10 +16,10 @@ internal class CatsRepositoryImpl @Inject constructor(
 
     override fun getCatsImages(
         limit: Int,
-        page: Int,
+        position: Int,
         order: OrderEntity
     ): Single<PageEntity<CatImageEntity>> {
-        return catsNetworkSource.getCatsImages(limit, page, order.toDto())
-            .map { PageEntity(it.current, it.total, it.items.toEntity()) }
+        return catsNetworkSource.getCatsImages(limit, position, order.toDto())
+            .map { PageEntity(it.startItem, it.totalItems, it.items.toEntity()) }
     }
 }

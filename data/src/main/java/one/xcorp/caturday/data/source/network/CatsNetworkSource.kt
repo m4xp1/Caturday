@@ -5,21 +5,18 @@ import one.xcorp.caturday.data.source.network.dto.CatImageDto
 import one.xcorp.caturday.domain.entity.PageEntity
 import rx.Single
 import javax.inject.Inject
-import kotlin.math.ceil
 
 internal class CatsNetworkSource @Inject constructor(
     private val catsApi: CatsApi
 ) {
 
-    fun getCatsImages(limit: Int, page: Int, order: String): Single<PageEntity<CatImageDto>> =
-        catsApi.searchImages(limit, page, order).map {
+    fun getCatsImages(limit: Int, position: Int, order: String): Single<PageEntity<CatImageDto>> =
+        catsApi.searchImages(limit, position / limit, order).map {
             val totalItems = requireNotNull(it.headers().get(PAGINATION_COUNT_HEADER)) {
                 "$PAGINATION_COUNT_HEADER header does not exist"
-            }.toFloat()
-
-            val totalPage = ceil(totalItems / limit).toInt()
+            }.toInt()
             val items = it.body() ?: emptyList()
 
-            PageEntity(page, totalPage, items)
+            PageEntity(position, totalItems, items)
         }
 }
