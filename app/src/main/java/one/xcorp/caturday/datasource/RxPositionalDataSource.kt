@@ -5,18 +5,16 @@ import one.xcorp.caturday.domain.entity.OrderEntity
 import one.xcorp.caturday.model.StatusModel
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
 import rx.subjects.PublishSubject
 
 abstract class RxPositionalDataSource<T, R> : PositionalDataSource<T>() {
 
     private val statusSubject = PublishSubject.create<StatusModel>()
-    private val statusObservable = statusSubject.asObservable()
+    private val statusObservable = statusSubject
         .observeOn(AndroidSchedulers.mainThread())
 
     private val loadSubject = PublishSubject.create<Request>()
-    private val loadObservable = loadSubject.asObservable()
-        .subscribeOn(Schedulers.io())
+    private val loadObservable = loadSubject
         .doOnNext { statusSubject.onNext(StatusModel.Running) }
         .flatMap { request ->
             loadData(request)
