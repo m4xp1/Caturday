@@ -16,4 +16,8 @@ abstract class BasePresenterImpl<V : BaseView> : BasePresenter<V> {
     override fun detach() {
         this.view = null
     }
+
+    override fun dispose() {
+        /* do nothing */
+    }
 }
