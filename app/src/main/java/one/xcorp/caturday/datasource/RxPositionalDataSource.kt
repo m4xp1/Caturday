@@ -30,6 +30,7 @@ abstract class RxPositionalDataSource<T, R>(
                 .map { Pair(request, it) }
         }
         .doOnNext { statusSubject.onNext(StatusModel.Success) }
+        .doOnUnsubscribe { statusSubject.onCompleted() }
         .subscribe { (request, value) ->
             request.callback(value)
         }
