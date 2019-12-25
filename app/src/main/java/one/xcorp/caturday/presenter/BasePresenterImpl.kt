@@ -1,8 +1,11 @@
 package one.xcorp.caturday.presenter
 
 import one.xcorp.caturday.view.BaseView
+import rx.subscriptions.CompositeSubscription
 
 abstract class BasePresenterImpl<V : BaseView> : BasePresenter<V> {
+
+    protected val compositeSubscription = CompositeSubscription()
 
     protected var view: V? = null
         private set
@@ -18,6 +21,6 @@ abstract class BasePresenterImpl<V : BaseView> : BasePresenter<V> {
     }
 
     override fun dispose() {
-        /* do nothing */
+        compositeSubscription.unsubscribe()
     }
 }
