@@ -1,9 +1,36 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="materialButtonStyle">@style/Button</item>
+        <item name="snackbarStyle">@style/Snackbar</item>
+        <item name="snackbarTextViewStyle">@style/Snackbar.TextView</item>
+        <item name="snackbarButtonStyle">@style/Snackbar.Button</item>
     </style>
 
+    <style name="Button" parent="@style/Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorAccent</item>
+    </style>
+
+    <style name="Snackbar" parent="@style/Widget.MaterialComponents.Snackbar">
+        <item name="android:layout_margin">@dimen/margin</item>
+        <item name="android:paddingTop">@dimen/padding</item>
+        <item name="android:paddingBottom">@dimen/padding</item>
+        <item name="backgroundTint">@color/window_background</item>
+        <item name="animationMode">slide</item>
+    </style>
+
+    <style name="Snackbar.TextView" parent="@style/Widget.MaterialComponents.TextView">
+        <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+        <item name="android:textAppearance">?attr/textAppearanceBody2</item>
+    </style>
+
+    <style name="Snackbar.Button" parent="@style/Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorAccent</item>
+        <item name="android:textAppearance">?attr/textAppearanceCaption</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
 </resources>
