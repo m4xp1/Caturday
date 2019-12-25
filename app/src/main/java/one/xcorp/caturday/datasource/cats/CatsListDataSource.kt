@@ -9,11 +9,13 @@ import one.xcorp.caturday.domain.usecase.GetCatsImagesUseCase
 import one.xcorp.caturday.mapper.toCatModel
 import one.xcorp.caturday.model.CatModel
 import rx.Observable
+import rx.subscriptions.CompositeSubscription
 
 class CatsListDataSource(
+    compositeSubscription: CompositeSubscription,
     private val getCatsImages: GetCatsImagesUseCase,
     private val order: OrderEntity = ASCENDING
-) : RxPositionalDataSource<CatModel, PageEntity<CatImageEntity>>() {
+) : RxPositionalDataSource<CatModel, PageEntity<CatImageEntity>>(compositeSubscription) {
 
     override fun initialRequest(
         params: LoadInitialParams,

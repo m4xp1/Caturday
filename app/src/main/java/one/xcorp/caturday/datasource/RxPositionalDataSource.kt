@@ -6,15 +6,18 @@ import one.xcorp.caturday.model.StatusModel
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.subjects.PublishSubject
+import rx.subscriptions.CompositeSubscription
 
-abstract class RxPositionalDataSource<T, R> : PositionalDataSource<T>() {
+abstract class RxPositionalDataSource<T, R>(
+    compositeSubscription: CompositeSubscription
+) : PositionalDataSource<T>() {
 
     private val statusSubject = PublishSubject.create<StatusModel>()
     private val statusObservable = statusSubject
         .observeOn(AndroidSchedulers.mainThread())
 
     private val loadSubject = PublishSubject.create<Request>()
-    private val loadObservable = loadSubject
+    private val loadSubscription = loadSubject
         .doOnNext { statusSubject.onNext(StatusModel.Running) }
         .flatMap { request ->
             loadData(request)
@@ -31,7 +34,9 @@ abstract class RxPositionalDataSource<T, R> : PositionalDataSource<T>() {
             request.callback(value)
         }
 
-    fun isDisposed(): Boolean = loadObservable.isUnsubscribed
+    init {
+        compositeSubscription.add(loadSubscription)
+    }
 
     fun observeStatus(): Observable<StatusModel> = statusObservable
 
@@ -53,7 +58,10 @@ abstract class RxPositionalDataSource<T, R> : PositionalDataSource<T>() {
 
     protected abstract fun loadData(request: Request): Observable<R>
 
-    fun dispose() = loadObservable.unsubscribe()
+    override fun invalidate() {
+        loadSubscription.unsubscribe()
+        super.invalidate()
+    }
 
     protected inner class Request(
         val limit: Int,
