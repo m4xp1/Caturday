@@ -13,5 +13,5 @@
         tools:itemCount="7"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:listitem="@layout/list_item_cat"
-        tools:spanCount="2" />
+        tools:spanCount="@integer/span_count" />
 </androidx.constraintlayout.widget.ConstraintLayout>
