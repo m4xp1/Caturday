@@ -8,7 +8,7 @@ import rx.Single
 
 internal interface CatsApi {
 
-    @GET(IMAGES_SEARCH_METHOD)
+    @GET(METHOD_IMAGES_SEARCH)
     fun searchImages(
         @Query("limit") limit: Int,
         @Query("page") page: Int,
@@ -17,11 +17,11 @@ internal interface CatsApi {
 
     companion object {
 
-        const val CATS_API_BASE_URL = "https://api.thecatapi.com/v1/"
+        const val URL_BASE = "https://api.thecatapi.com/v1/"
 
-        const val X_API_KEY_HEADER = "x-api-key"
-        const val PAGINATION_COUNT_HEADER = "pagination-count"
+        const val HEADER_X_API_KEY = "x-api-key"
+        const val HEADER_PAGINATION_COUNT = "pagination-count"
 
-        private const val IMAGES_SEARCH_METHOD = "images/search"
+        private const val METHOD_IMAGES_SEARCH = "images/search"
     }
 }

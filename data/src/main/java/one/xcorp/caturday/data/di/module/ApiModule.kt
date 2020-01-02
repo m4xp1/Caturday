@@ -21,12 +21,12 @@ internal class ApiModule {
     ): CatsApi {
         httpClientBuilder.addInterceptor {
             val request: Request = it.request().newBuilder()
-                .header(CatsApi.X_API_KEY_HEADER, apiKey)
+                .header(CatsApi.HEADER_X_API_KEY, apiKey)
                 .build()
             it.proceed(request)
         }
 
-        retrofitBuilder.baseUrl(CatsApi.CATS_API_BASE_URL)
+        retrofitBuilder.baseUrl(CatsApi.URL_BASE)
         retrofitBuilder.client(httpClientBuilder.build())
 
         return retrofitBuilder.build().create(CatsApi::class.java)
