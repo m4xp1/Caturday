@@ -8,7 +8,7 @@ import rx.Single
 interface CatsRepository {
 
     fun getCatsImages(
-        limit: Int,
+        size: Int,
         position: Int,
         order: OrderEntity
     ): Single<PageEntity<CatImageEntity>>

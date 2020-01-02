@@ -12,8 +12,8 @@ class GetCatsImagesUseCase @Inject constructor(
 ) {
 
     operator fun invoke(
-        limit: Int,
+        size: Int,
         position: Int,
         order: OrderEntity
-    ): Single<PageEntity<CatImageEntity>> = catsRepository.getCatsImages(limit, position, order)
+    ): Single<PageEntity<CatImageEntity>> = catsRepository.getCatsImages(size, position, order)
 }
