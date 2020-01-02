@@ -1,7 +1,5 @@
 package one.xcorp.caturday.data.repository
 
-import one.xcorp.caturday.data.mapper.toDto
-import one.xcorp.caturday.data.mapper.toEntity
 import one.xcorp.caturday.data.source.network.CatsNetworkSource
 import one.xcorp.caturday.domain.entity.CatImageEntity
 import one.xcorp.caturday.domain.entity.OrderEntity
@@ -15,11 +13,10 @@ internal class CatsRepositoryImpl @Inject constructor(
 ) : CatsRepository {
 
     override fun getCatsImages(
-        limit: Int,
+        size: Int,
         position: Int,
         order: OrderEntity
     ): Single<PageEntity<CatImageEntity>> {
-        return catsNetworkSource.getCatsImages(limit, position, order.toDto())
-            .map { PageEntity(it.startItem, it.totalItems, it.items.toEntity()) }
+        return catsNetworkSource.getCatsImages(size, position, order)
     }
 }
