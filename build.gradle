@@ -4,6 +4,7 @@ buildscript {
     ext.dagger_version = '2.25.3'
     ext.jsr_330 = '1'
     ext.rx_java = '1.3.8'
+    ext.rx_kotlin = '1.0.0'
 
     repositories {
         google()

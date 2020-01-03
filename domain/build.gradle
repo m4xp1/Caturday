@@ -18,4 +18,5 @@ dependencies {
 
     // RxJava
     implementation "io.reactivex:rxjava:$rx_java"
+    implementation "io.reactivex:rxkotlin:$rx_kotlin"
 }

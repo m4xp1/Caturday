@@ -48,6 +48,7 @@ dependencies {
 
     // RxJava
     implementation "io.reactivex:rxjava:$rx_java"
+    implementation "io.reactivex:rxkotlin:$rx_kotlin"
     implementation 'io.reactivex:rxandroid:1.2.1'
 
     // Glide
