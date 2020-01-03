@@ -1,6 +1,6 @@
 package one.xcorp.caturday.data.repository
 
-import one.xcorp.caturday.data.source.network.CatsNetworkSource
+import one.xcorp.caturday.data.source.retrofit.CatsRetrofitSource
 import one.xcorp.caturday.domain.entity.CatImageEntity
 import one.xcorp.caturday.domain.entity.OrderEntity
 import one.xcorp.caturday.domain.entity.PageEntity
@@ -9,7 +9,7 @@ import rx.Single
 import javax.inject.Inject
 
 internal class CatsRepositoryImpl @Inject constructor(
-    private val catsNetworkSource: CatsNetworkSource
+    private val catsNetworkSource: CatsRetrofitSource
 ) : CatsRepository {
 
     override fun getCatsImages(

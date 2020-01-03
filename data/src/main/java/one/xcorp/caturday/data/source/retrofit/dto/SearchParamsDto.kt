@@ -1,4 +1,4 @@
-package one.xcorp.caturday.data.source.network.dto
+package one.xcorp.caturday.data.source.retrofit.dto
 
 import kotlin.math.sqrt
 

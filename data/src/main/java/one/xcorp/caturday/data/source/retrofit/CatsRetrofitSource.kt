@@ -1,9 +1,9 @@
-package one.xcorp.caturday.data.source.network
+package one.xcorp.caturday.data.source.retrofit
 
 import one.xcorp.caturday.data.mapper.toDto
 import one.xcorp.caturday.data.mapper.toEntity
-import one.xcorp.caturday.data.source.network.CatsApi.Companion.HEADER_PAGINATION_COUNT
-import one.xcorp.caturday.data.source.network.dto.SearchParamsDto
+import one.xcorp.caturday.data.source.retrofit.CatsRetrofitApi.Companion.HEADER_PAGINATION_COUNT
+import one.xcorp.caturday.data.source.retrofit.dto.SearchParamsDto
 import one.xcorp.caturday.domain.entity.CatImageEntity
 import one.xcorp.caturday.domain.entity.OrderEntity
 import one.xcorp.caturday.domain.entity.PageEntity
@@ -11,8 +11,8 @@ import rx.Single
 import rx.schedulers.Schedulers
 import javax.inject.Inject
 
-internal class CatsNetworkSource @Inject constructor(
-    private val catsApi: CatsApi
+internal class CatsRetrofitSource @Inject constructor(
+    private val catsApi: CatsRetrofitApi
 ) {
 
     fun getCatsImages(

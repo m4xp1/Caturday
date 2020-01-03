@@ -1,12 +1,12 @@
-package one.xcorp.caturday.data.source.network
+package one.xcorp.caturday.data.source.retrofit
 
-import one.xcorp.caturday.data.source.network.dto.CatImageDto
+import one.xcorp.caturday.data.source.retrofit.dto.CatImageDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 import rx.Single
 
-internal interface CatsApi {
+internal interface CatsRetrofitApi {
 
     @GET(METHOD_IMAGES_SEARCH)
     fun searchImages(
