@@ -1,10 +1,10 @@
-package one.xcorp.caturday.data.di.module
+package one.xcorp.caturday.data.dagger.module
 
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import one.xcorp.caturday.data.di.qualifier.CatsApiKey
+import one.xcorp.caturday.data.dagger.qualifier.CatsApiKey
 import one.xcorp.caturday.data.source.retrofit.CatsRetrofitApi
 import retrofit2.Retrofit
 import javax.inject.Singleton

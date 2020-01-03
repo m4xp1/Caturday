@@ -1,4 +1,4 @@
-package one.xcorp.caturday.data.di.qualifier
+package one.xcorp.caturday.data.dagger.qualifier
 
 import javax.inject.Qualifier
 

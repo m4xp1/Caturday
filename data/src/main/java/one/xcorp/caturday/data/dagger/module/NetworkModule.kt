@@ -1,4 +1,4 @@
-package one.xcorp.caturday.data.di.module
+package one.xcorp.caturday.data.dagger.module
 
 import com.google.gson.Gson
 import dagger.Module

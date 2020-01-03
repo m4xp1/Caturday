@@ -1,4 +1,4 @@
-package one.xcorp.caturday.data.di.module
+package one.xcorp.caturday.data.dagger.module
 
 import dagger.Binds
 import dagger.Module
