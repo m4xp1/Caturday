@@ -1,4 +1,4 @@
-package one.xcorp.caturday.di.module
+package one.xcorp.caturday.dagger.module
 
 import android.app.Application
 import android.content.Context

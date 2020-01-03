@@ -1,10 +1,10 @@
-package one.xcorp.caturday.di
+package one.xcorp.caturday.dagger
 
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
-import one.xcorp.caturday.data.di.DataComponent
-import one.xcorp.caturday.di.module.ApplicationModule
+import one.xcorp.caturday.data.dagger.DataComponent
+import one.xcorp.caturday.dagger.module.ApplicationModule
 import ru.cardsmobile.mw3.barch.presentation.di.scope.ApplicationScope
 
 @ApplicationScope
