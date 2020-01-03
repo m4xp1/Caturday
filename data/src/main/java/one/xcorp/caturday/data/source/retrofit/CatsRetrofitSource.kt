@@ -30,7 +30,7 @@ internal class CatsRetrofitSource @Inject constructor(
                 }
                 val items = it.body()?.drop(offset)?.take(size) ?: emptyList()
 
-                PageEntity(totalItems, items.toEntity())
+                PageEntity(position, totalItems, items.toEntity())
             }
     }
 }
