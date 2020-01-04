@@ -1,8 +1,8 @@
 package one.xcorp.caturday
 
-import one.xcorp.caturday.data.di.DaggerDataComponent
-import one.xcorp.caturday.di.ApplicationComponent
-import one.xcorp.caturday.di.DaggerApplicationComponent
+import one.xcorp.caturday.dagger.ApplicationComponent
+import one.xcorp.caturday.dagger.DaggerApplicationComponent
+import one.xcorp.caturday.data.dagger.DaggerDataComponent
 
 class Application : android.app.Application() {
 

@@ -1,9 +1,8 @@
-package one.xcorp.caturday.presenter
+package one.xcorp.caturday
 
-import one.xcorp.caturday.view.BaseView
 import rx.subscriptions.CompositeSubscription
 
-abstract class BasePresenterImpl<V : BaseView> : BasePresenter<V> {
+abstract class BasePresenterImpl<V : BaseView, S : BaseState> : BasePresenter<V, S> {
 
     protected val compositeSubscription = CompositeSubscription()
 
@@ -12,8 +11,12 @@ abstract class BasePresenterImpl<V : BaseView> : BasePresenter<V> {
 
     override var isAttached = view != null
 
-    override fun attach(view: V) {
+    override fun attach(view: V, state: S?) {
         this.view = view
+    }
+
+    override fun getState(): S? {
+        return null
     }
 
     override fun detach() {

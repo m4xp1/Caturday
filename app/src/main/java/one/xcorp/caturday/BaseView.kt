@@ -1,4 +1,4 @@
-package one.xcorp.caturday.view
+package one.xcorp.caturday
 
 import android.content.Context
 

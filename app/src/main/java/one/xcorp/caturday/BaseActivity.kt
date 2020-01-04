@@ -1,8 +1,7 @@
-package one.xcorp.caturday.activity
+package one.xcorp.caturday
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import one.xcorp.caturday.view.BaseView
 
 abstract class BaseActivity : AppCompatActivity(), BaseView {
 
