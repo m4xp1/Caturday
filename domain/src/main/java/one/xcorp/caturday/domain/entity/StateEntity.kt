@@ -1,17 +1,17 @@
-package one.xcorp.caturday.data.paging
+package one.xcorp.caturday.domain.entity
 
-sealed class State<out I, out R> {
+sealed class StateEntity<out I, out R> {
 
     data class Running<out I>(
         val info: I? = null
-    ) : State<I, Nothing>()
+    ) : StateEntity<I, Nothing>()
 
     data class Failed(
         val error: Throwable,
         val retry: (() -> Unit)? = null
-    ) : State<Nothing, Nothing>()
+    ) : StateEntity<Nothing, Nothing>()
 
     data class Success<out R>(
         val result: R
-    ) : State<Nothing, R>()
+    ) : StateEntity<Nothing, R>()
 }
