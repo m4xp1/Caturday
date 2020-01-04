@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import kotlinx.android.synthetic.main.list_item_cat.view.*
 import one.xcorp.caturday.R
 import one.xcorp.caturday.glide.GlideApp
-import one.xcorp.caturday.model.CatModel
+import one.xcorp.caturday.screen.cats.list.model.CatModel
 
 class CatViewHolder private constructor(
     view: View

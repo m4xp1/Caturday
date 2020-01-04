@@ -3,7 +3,7 @@ package one.xcorp.caturday.screen.cats.list.adapter
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import one.xcorp.caturday.model.CatModel
+import one.xcorp.caturday.screen.cats.list.model.CatModel
 
 class CatsListAdapter : PagedListAdapter<CatModel, CatViewHolder>(DiffCallback) {
 
