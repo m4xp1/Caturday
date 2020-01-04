@@ -1,8 +1,7 @@
-package one.xcorp.caturday.adapter
+package one.xcorp.caturday.data.paging
 
 import androidx.paging.PositionalDataSource
-import one.xcorp.caturday.model.StateModel
-import one.xcorp.caturday.model.StateModel.*
+import one.xcorp.caturday.data.paging.State.*
 import rx.Observable
 import rx.Observable.just
 import rx.Single
@@ -22,9 +21,9 @@ abstract class RxPositionalDataSource<T, R>(
     private val loadSubject = PublishSubject.create<Request>()
     private val loadObservable = loadSubject
         .concatMap { request ->
-            just<StateModel<Info, R>>(Running(request.toInfo())).concatWith(
+            just<State<Info, R>>(Running(request.toInfo())).concatWith(
                 loadDataSingle(request).toObservable()
-                    .map<StateModel<Info, R>> { Success(it) }
+                    .map<State<Info, R>> { Success(it) }
                     .onErrorReturn {
                         Failed(it) {
                             loadSubject.onNext(request)
@@ -42,7 +41,7 @@ abstract class RxPositionalDataSource<T, R>(
             .addTo(compositeSubscription)
     }
 
-    fun observeState(): Observable<StateModel<Info, R>> = loadObservable
+    fun observeState(): Observable<State<Info, R>> = loadObservable
         .takeUntil(subscriptionSubject)
         .observeOn(AndroidSchedulers.mainThread())
 

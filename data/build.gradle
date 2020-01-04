@@ -49,6 +49,10 @@ dependencies {
     // RxJava
     implementation "io.reactivex:rxjava:$rxjava_version"
     implementation "io.reactivex:rxkotlin:$rxkotlin_version"
+    implementation "io.reactivex:rxandroid:$rxandroid_version"
+
+    // Paging
+    implementation "android.arch.paging:common:$paging_version"
 
     // Gson
     implementation "com.google.code.gson:gson:$gson_version"
