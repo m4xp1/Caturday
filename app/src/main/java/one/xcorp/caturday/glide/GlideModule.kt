@@ -1,4 +1,4 @@
-package one.xcorp.caturday
+package one.xcorp.caturday.glide
 
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule
