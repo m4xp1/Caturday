@@ -1,12 +1,12 @@
-package one.xcorp.caturday.adapter.cats
+package one.xcorp.caturday.screen.cats.list.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import kotlinx.android.synthetic.main.list_item_cat.view.*
-import one.xcorp.caturday.GlideApp
 import one.xcorp.caturday.R
+import one.xcorp.caturday.glide.GlideApp
 import one.xcorp.caturday.model.CatModel
 
 class CatViewHolder private constructor(

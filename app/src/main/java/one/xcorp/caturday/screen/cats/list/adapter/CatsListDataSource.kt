@@ -1,6 +1,6 @@
-package one.xcorp.caturday.adapter.cats
+package one.xcorp.caturday.screen.cats.list.adapter
 
-import one.xcorp.caturday.adapter.RxPositionalDataSource
+import one.xcorp.caturday.data.paging.RxPositionalDataSource
 import one.xcorp.caturday.domain.entity.CatEntity
 import one.xcorp.caturday.domain.entity.OrderEntity
 import one.xcorp.caturday.domain.entity.OrderEntity.ASCENDING
@@ -13,7 +13,7 @@ import rx.subscriptions.CompositeSubscription
 
 class CatsListDataSource(
     compositeSubscription: CompositeSubscription,
-    private val getCatsImages: GetCatsListUseCase,
+    private val getCatsList: GetCatsListUseCase,
     private val order: OrderEntity = ASCENDING
 ) : RxPositionalDataSource<CatModel, PageEntity<CatEntity>>(compositeSubscription) {
 
@@ -30,5 +30,5 @@ class CatsListDataSource(
     }
 
     override fun loadDataSingle(request: Request): Single<PageEntity<CatEntity>> =
-        getCatsImages(request.size, request.position, order, request.isInitial)
+        getCatsList(request.size, request.position, order, request.isInitial)
 }

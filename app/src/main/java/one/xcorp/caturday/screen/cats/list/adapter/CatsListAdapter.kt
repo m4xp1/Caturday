@@ -1,4 +1,4 @@
-package one.xcorp.caturday.adapter.cats
+package one.xcorp.caturday.screen.cats.list.adapter
 
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
