@@ -9,10 +9,6 @@ abstract class BasePresenterImpl<V : BaseView, S : BaseState> : BasePresenter<V,
 
     protected val compositeSubscription = CompositeSubscription()
 
-    override fun onCreate(state: S?) {
-        /* do nothing */
-    }
-
     override fun attach(view: V) {
         this.view = view
     }
