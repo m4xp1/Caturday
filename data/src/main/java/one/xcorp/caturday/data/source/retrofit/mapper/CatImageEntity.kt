@@ -1,4 +1,4 @@
-package one.xcorp.caturday.data.mapper
+package one.xcorp.caturday.data.source.retrofit.mapper
 
 import one.xcorp.caturday.data.source.retrofit.dto.CatImageDto
 import one.xcorp.caturday.domain.entity.CatImageEntity

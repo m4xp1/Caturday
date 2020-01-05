@@ -1,7 +1,7 @@
 package one.xcorp.caturday.data.source.retrofit
 
-import one.xcorp.caturday.data.mapper.toDto
-import one.xcorp.caturday.data.mapper.toEntity
+import one.xcorp.caturday.data.source.retrofit.mapper.toDto
+import one.xcorp.caturday.data.source.retrofit.mapper.toEntity
 import one.xcorp.caturday.data.source.retrofit.CatsRetrofitApi.Companion.HEADER_PAGINATION_COUNT
 import one.xcorp.caturday.data.source.retrofit.dto.SearchParamsDto
 import one.xcorp.caturday.domain.entity.CatImageEntity
