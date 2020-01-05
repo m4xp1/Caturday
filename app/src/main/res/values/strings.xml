@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Caturday</string>
+
+    <!-- CatsList -->
+    <string name="message_can_not_load_data">
+        Не удалось загрузить данные
+    </string>
+    <string name="message_check_network_connection">
+        Нет интернет подключения
+    </string>
+    <string name="retry_button">Повторить</string>
 </resources>
