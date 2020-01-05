@@ -9,13 +9,11 @@ import one.xcorp.caturday.domain.usecase.GetCatsListUseCase
 import one.xcorp.caturday.screen.cats.list.mapper.toCatModel
 import one.xcorp.caturday.screen.cats.list.model.CatModel
 import rx.Single
-import rx.subscriptions.CompositeSubscription
 
 class CatsListDataSource(
-    compositeSubscription: CompositeSubscription,
     private val getCatsList: GetCatsListUseCase,
     private val order: OrderEntity = ASCENDING
-) : RxPositionalDataSource<CatModel, PageEntity<CatEntity>>(compositeSubscription) {
+) : RxPositionalDataSource<CatModel, PageEntity<CatEntity>>() {
 
     override fun loadInitial(params: LoadInitialParams, callback: LoadInitialCallback<CatModel>) {
         loadData(Request(params.requestedLoadSize, params.requestedStartPosition, true)) {

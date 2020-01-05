@@ -8,16 +8,12 @@ import rx.Observable.just
 import rx.Single
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
-import rx.lang.kotlin.addTo
 import rx.subjects.PublishSubject
 import rx.subjects.ReplaySubject
-import rx.subscriptions.CompositeSubscription
 
-abstract class RxPositionalDataSource<T, R>(
-    compositeSubscription: CompositeSubscription
-) : PositionalDataSource<T>() {
+abstract class RxPositionalDataSource<T, R> : PositionalDataSource<T>() {
 
-    private val subscriptionSubject = ReplaySubject.create<Unit>()
+    private val unsubscribeSubject = ReplaySubject.create<Unit>()
 
     private val loadSubject = PublishSubject.create<Request>()
     private val loadObservable = loadSubject
@@ -32,23 +28,22 @@ abstract class RxPositionalDataSource<T, R>(
                     }
             )
         }
-        .doOnUnsubscribe { subscriptionSubject.onNext(Unit) }
+        .doOnUnsubscribe { unsubscribeSubject.onNext(Unit) }
         .publish()
 
     private val loadSubscription: Subscription
 
     init {
         loadSubscription = loadObservable.connect()
-            .addTo(compositeSubscription)
     }
 
     fun observeState(): Observable<StateEntity<Info, R>> = loadObservable
-        .takeUntil(subscriptionSubject)
+        .takeUntil(unsubscribeSubject)
         .observeOn(AndroidSchedulers.mainThread())
 
     protected fun loadData(request: Request, callback: R.() -> Unit) {
         loadObservable.doOnSubscribe { loadSubject.onNext(request) }
-            .takeUntil(subscriptionSubject)
+            .takeUntil(unsubscribeSubject)
             .takeFirst { it is Success }
             .map { it as Success<R> }
             .toBlocking()
