@@ -28,12 +28,12 @@ class Application : android.app.Application() {
         }
 
         @Suppress("UNCHECKED_CAST")
-        fun <T : Any> obtain(block: () -> T): T {
-            return holder.getOrPut(block, block) as T
+        fun <T : Any> obtain(supplier: () -> T): T {
+            return holder.getOrPut(supplier, supplier) as T
         }
 
-        fun <T> release(block: () -> T): Boolean {
-            return holder.remove(block) != null
+        fun <T> release(supplier: () -> T): Boolean {
+            return holder.remove(supplier) != null
         }
     }
 }
