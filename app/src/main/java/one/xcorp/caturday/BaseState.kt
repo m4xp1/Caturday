@@ -1,5 +1,5 @@
 package one.xcorp.caturday
 
-import java.io.Serializable
+import android.os.Parcelable
 
-interface BaseState : Serializable
+interface BaseState : Parcelable
