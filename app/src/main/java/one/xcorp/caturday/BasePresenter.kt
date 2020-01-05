@@ -2,9 +2,9 @@ package one.xcorp.caturday
 
 interface BasePresenter<V : BaseView, S : BaseState> {
 
-    var isAttached: Boolean
+    fun onCreate(state: S?)
 
-    fun attach(view: V, state: S?)
+    fun attach(view: V)
 
     fun getState(): S?
 

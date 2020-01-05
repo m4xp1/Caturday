@@ -4,14 +4,16 @@ import rx.subscriptions.CompositeSubscription
 
 abstract class BasePresenterImpl<V : BaseView, S : BaseState> : BasePresenter<V, S> {
 
-    protected val compositeSubscription = CompositeSubscription()
-
     protected var view: V? = null
         private set
 
-    override var isAttached = view != null
+    protected val compositeSubscription = CompositeSubscription()
 
-    override fun attach(view: V, state: S?) {
+    override fun onCreate(state: S?) {
+        /* do nothing */
+    }
+
+    override fun attach(view: V) {
         this.view = view
     }
 
