@@ -1,3 +1,5 @@
 package one.xcorp.caturday
 
-interface BaseState
+import java.io.Serializable
+
+interface BaseState : Serializable
