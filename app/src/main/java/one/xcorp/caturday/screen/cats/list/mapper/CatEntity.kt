@@ -1,4 +1,4 @@
-package one.xcorp.caturday.mapper
+package one.xcorp.caturday.screen.cats.list.mapper
 
 import one.xcorp.caturday.domain.entity.CatEntity
 import one.xcorp.caturday.screen.cats.list.model.CatModel

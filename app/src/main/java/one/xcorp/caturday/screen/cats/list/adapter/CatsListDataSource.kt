@@ -6,7 +6,7 @@ import one.xcorp.caturday.domain.entity.OrderEntity
 import one.xcorp.caturday.domain.entity.OrderEntity.ASCENDING
 import one.xcorp.caturday.domain.entity.PageEntity
 import one.xcorp.caturday.domain.usecase.GetCatsListUseCase
-import one.xcorp.caturday.mapper.toCatModel
+import one.xcorp.caturday.screen.cats.list.mapper.toCatModel
 import one.xcorp.caturday.screen.cats.list.model.CatModel
 import rx.Single
 import rx.subscriptions.CompositeSubscription
