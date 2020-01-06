@@ -2,7 +2,7 @@ package one.xcorp.caturday.data.dagger
 
 import dagger.BindsInstance
 import dagger.Component
-import one.xcorp.caturday.data.dagger.module.ApiModule
+import one.xcorp.caturday.data.dagger.module.RetrofitModule
 import one.xcorp.caturday.data.dagger.module.NetworkModule
 import one.xcorp.caturday.data.dagger.module.RepositoryModule
 import one.xcorp.caturday.data.dagger.qualifier.CatsApiKey
@@ -13,7 +13,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         NetworkModule::class,
-        ApiModule::class,
+        RetrofitModule::class,
         RepositoryModule::class
     ]
 )
