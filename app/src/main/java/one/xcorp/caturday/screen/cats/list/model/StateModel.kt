@@ -1,5 +1,7 @@
 package one.xcorp.caturday.screen.cats.list.model
 
+import androidx.annotation.StringRes
+
 sealed class StateModel {
 
     data class Running(
@@ -7,7 +9,7 @@ sealed class StateModel {
     ) : StateModel()
 
     data class Failed(
-        val message: Int,
+        @StringRes val message: Int,
         val retry: () -> Unit
     ) : StateModel()
 
