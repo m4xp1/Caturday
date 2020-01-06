@@ -3,7 +3,6 @@
     <dimen name="margin">16dp</dimen>
     <dimen name="padding">8dp</dimen>
 
-    <!-- CatsListActivity -->
+    <!-- CatsList -->
     <integer name="span_count">2</integer>
-    <dimen name="grid_item_spacing">4dp</dimen>
 </resources>
