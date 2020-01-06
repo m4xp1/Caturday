@@ -14,9 +14,9 @@ class Application : android.app.Application() {
     companion object Dependencies {
 
         val applicationComponent: ApplicationComponent by lazy {
-            DaggerApplicationComponent.factory().create(
+            DaggerApplicationComponent.factory().createComponent(
                 application,
-                DaggerDataComponent.factory().create(BuildConfig.CATS_API_KEY)
+                DaggerDataComponent.factory().createComponent(BuildConfig.CATS_API_KEY)
             )
         }
 

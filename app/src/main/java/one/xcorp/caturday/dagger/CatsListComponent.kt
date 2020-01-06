@@ -21,7 +21,7 @@ interface CatsListComponent {
     @Subcomponent.Factory
     interface Factory {
 
-        fun create(@BindsInstance state: CatsListContract.State?): CatsListComponent
+        fun createComponent(@BindsInstance state: CatsListContract.State?): CatsListComponent
     }
 
     class Holder(factory: Factory) : SingleComponentHolder<Factory, CatsListComponent>(factory)
