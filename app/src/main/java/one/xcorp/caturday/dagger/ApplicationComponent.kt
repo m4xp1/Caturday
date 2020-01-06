@@ -3,8 +3,8 @@ package one.xcorp.caturday.dagger
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
-import one.xcorp.caturday.data.dagger.DataComponent
 import one.xcorp.caturday.dagger.module.ApplicationModule
+import one.xcorp.caturday.data.dagger.DataComponent
 import ru.cardsmobile.mw3.barch.presentation.di.scope.ApplicationScope
 
 @ApplicationScope
@@ -18,7 +18,9 @@ import ru.cardsmobile.mw3.barch.presentation.di.scope.ApplicationScope
 )
 interface ApplicationComponent {
 
-    fun catsList(): CatsListComponent
+    val catsListComponent: CatsListComponent.Holder
+
+    val catsListComponentFactory: CatsListComponent.Factory
 
     @Component.Factory
     interface Factory {
