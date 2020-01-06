@@ -10,10 +10,6 @@ abstract class SingleComponentHolder<Factory : Any, Component : Any>(
         instance ?: initializer(factory).also { instance = it }
     }
 
-    override fun get(): Component = synchronized(this) {
-        requireNotNull(instance) { "Requested component not initialized." }
-    }
-
     override fun release() = synchronized(this) {
         instance = null
     }
