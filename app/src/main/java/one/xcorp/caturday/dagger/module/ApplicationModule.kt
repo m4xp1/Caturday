@@ -2,14 +2,20 @@ package one.xcorp.caturday.dagger.module
 
 import android.app.Application
 import android.content.Context
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
+import one.xcorp.caturday.dagger.CatsListComponent
 import ru.cardsmobile.mw3.barch.presentation.di.scope.ApplicationScope
 
 @Module
-abstract class ApplicationModule {
+class ApplicationModule {
 
-    @Binds
+    @Provides
     @ApplicationScope
-    abstract fun bindApplicationContext(application: Application): Context
+    fun applicationContext(application: Application): Context = application
+
+    @Provides
+    @ApplicationScope
+    fun catsListComponentHolder(factory: CatsListComponent.Factory): CatsListComponent.Holder =
+        CatsListComponent.Holder(factory)
 }
