@@ -10,11 +10,11 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
     private var componentHolder: ComponentHolder<*, *>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        componentHolder = inject(savedInstanceState)
+        componentHolder = onInject(savedInstanceState)
         super.onCreate(savedInstanceState)
     }
 
-    open fun inject(savedInstanceState: Bundle?): ComponentHolder<*, *>? {
+    open fun onInject(savedInstanceState: Bundle?): ComponentHolder<*, *>? {
         return null
     }
 
