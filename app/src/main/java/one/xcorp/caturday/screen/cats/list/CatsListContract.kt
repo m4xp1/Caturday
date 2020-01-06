@@ -11,12 +11,13 @@ interface CatsListContract {
 
     interface View : BaseView {
 
-        fun showState(state: StateModel)
+        fun showCatsListState(state: StateModel)
 
-        fun showCats(list: PagedList<CatModel>)
+        fun showCatsList(list: PagedList<CatModel>)
     }
 
     interface State : BaseState {
+
         val initialKey: Int
     }
 
