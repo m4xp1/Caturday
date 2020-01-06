@@ -18,7 +18,7 @@ import ru.cardsmobile.mw3.barch.presentation.di.scope.ApplicationScope
 )
 interface ApplicationComponent {
 
-    val catsListComponent: CatsListComponent.Holder
+    val catsListComponentHolder: CatsListComponent.Holder
 
     val catsListComponentFactory: CatsListComponent.Factory
 
