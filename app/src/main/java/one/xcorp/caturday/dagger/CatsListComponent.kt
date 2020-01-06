@@ -16,7 +16,7 @@ import ru.cardsmobile.mw3.barch.presentation.di.scope.ActivityScope
 )
 interface CatsListComponent {
 
-    fun inject(activity: CatsListActivity)
+    fun inject(instance: CatsListActivity)
 
     @Subcomponent.Factory
     interface Factory {
