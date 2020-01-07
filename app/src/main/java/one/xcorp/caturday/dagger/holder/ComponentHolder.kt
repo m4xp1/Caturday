@@ -2,7 +2,7 @@ package one.xcorp.caturday.dagger.holder
 
 interface ComponentHolder<Factory : Any, Component : Any> {
 
-    fun get(initializer: Factory.() -> Component): Component
+    fun getComponent(initializer: Factory.() -> Component): Component
 
     fun release()
 }

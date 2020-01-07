@@ -6,7 +6,7 @@ abstract class SingleComponentHolder<Factory : Any, Component : Any>(
 
     private var instance: Component? = null
 
-    override fun get(initializer: Factory.() -> Component): Component = synchronized(this) {
+    override fun getComponent(initializer: Factory.() -> Component) = synchronized(this) {
         instance ?: initializer(factory).also { instance = it }
     }
 
