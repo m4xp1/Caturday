@@ -8,12 +8,12 @@ import rx.Observable.just
 import rx.Single
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
+import rx.subjects.BehaviorSubject
 import rx.subjects.PublishSubject
-import rx.subjects.ReplaySubject
 
 abstract class RxPositionalDataSource<T, R> : PositionalDataSource<T>() {
 
-    private val unsubscribeSubject = ReplaySubject.create<Unit>()
+    private val unsubscribeSubject = BehaviorSubject.create<Unit>()
 
     private val loadSubject = PublishSubject.create<Request>()
     private val loadObservable = loadSubject
