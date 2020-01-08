@@ -18,7 +18,8 @@ import one.xcorp.caturday.dagger.injector.Injector
 import one.xcorp.caturday.screen.cats.list.adapter.CatsListAdapter
 import one.xcorp.caturday.screen.cats.list.model.CatModel
 import one.xcorp.caturday.screen.cats.list.model.StateModel
-import one.xcorp.caturday.screen.cats.list.model.StateModel.*
+import one.xcorp.caturday.screen.cats.list.model.StateModel.Failed
+import one.xcorp.caturday.screen.cats.list.model.StateModel.Running
 import javax.inject.Inject
 
 class CatsListActivity : BaseActivity(), CatsListContract.View {
@@ -58,19 +59,20 @@ class CatsListActivity : BaseActivity(), CatsListContract.View {
         outState.putParcelable(KEY_CATS_LIST_CONTRACT_PRESENTER_STATE, presenter.getState())
     }
 
-    override fun showCatsListState(state: StateModel) = when (state) {
-        is Running -> {
-            progressView.visibility = if (state.isInitial) VISIBLE else GONE
-            recyclerView.visibility = if (state.isInitial) GONE else VISIBLE
-        }
-        is Failed -> {
-            Snackbar.make(recyclerView, state.message, LENGTH_INDEFINITE)
-                .setAction(R.string.retry_button) { state.retry() }
-                .show()
-        }
-        is Success -> {
-            progressView.visibility = GONE
-            recyclerView.visibility = VISIBLE
+    override fun showCatsListState(state: StateModel) {
+        progressView.visibility = GONE
+        recyclerView.visibility = VISIBLE
+
+        when {
+            state is Running && state.isInitial -> {
+                progressView.visibility = VISIBLE
+                recyclerView.visibility = GONE
+            }
+            state is Failed -> {
+                Snackbar.make(recyclerView, state.message, LENGTH_INDEFINITE)
+                    .setAction(R.string.retry_button) { state.retry() }
+                    .show()
+            }
         }
     }
 
