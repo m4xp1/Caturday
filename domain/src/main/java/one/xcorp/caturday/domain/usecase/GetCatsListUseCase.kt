@@ -33,7 +33,7 @@ class GetCatsListUseCase @Inject constructor(
 
         return request.map { page ->
             val items = page.items.map { CatEntity(it.id, it.image) }
-            PageEntity(page.startPosition, page.totalCount, items)
+            PageEntity(items, page.position, page.totalCount)
         }
     }
 }

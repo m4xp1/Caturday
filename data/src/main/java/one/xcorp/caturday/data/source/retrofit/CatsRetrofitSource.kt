@@ -1,9 +1,9 @@
 package one.xcorp.caturday.data.source.retrofit
 
-import one.xcorp.caturday.data.source.retrofit.mapper.toDto
-import one.xcorp.caturday.data.source.retrofit.mapper.toEntity
 import one.xcorp.caturday.data.source.retrofit.CatsRetrofitApi.Companion.HEADER_PAGINATION_COUNT
 import one.xcorp.caturday.data.source.retrofit.dto.SearchParamsDto
+import one.xcorp.caturday.data.source.retrofit.mapper.toDto
+import one.xcorp.caturday.data.source.retrofit.mapper.toEntity
 import one.xcorp.caturday.domain.entity.CatImageEntity
 import one.xcorp.caturday.domain.entity.OrderEntity
 import one.xcorp.caturday.domain.entity.PageEntity
@@ -25,12 +25,12 @@ internal class CatsRetrofitSource @Inject constructor(
             .map {
                 val paginationCount = it.headers().get(HEADER_PAGINATION_COUNT)
 
-                val totalItems = requireNotNull(paginationCount?.toIntOrNull()) {
+                val items = it.body()?.drop(offset)?.take(size) ?: emptyList()
+                val totalCount = requireNotNull(paginationCount?.toIntOrNull()) {
                     "$HEADER_PAGINATION_COUNT header does not exist or not a int value."
                 }
-                val items = it.body()?.drop(offset)?.take(size) ?: emptyList()
 
-                PageEntity(position, totalItems, items.toEntity())
+                PageEntity(items.toEntity(), position, totalCount)
             }
     }
 }

@@ -1,8 +1,8 @@
 package one.xcorp.caturday.dagger.module
 
-import androidx.paging.DataSource
 import dagger.Module
 import dagger.Provides
+import one.xcorp.caturday.data.paging.RxPositionalDataSource
 import one.xcorp.caturday.domain.usecase.GetCatsListUseCase
 import one.xcorp.caturday.screen.cats.list.CatsListContract
 import one.xcorp.caturday.screen.cats.list.CatsListPresenter
@@ -14,7 +14,7 @@ import ru.cardsmobile.mw3.barch.presentation.di.scope.ActivityScope
 class CatsListModule {
 
     @Provides
-    fun catsListDataSource(useCase: GetCatsListUseCase): DataSource<Int, CatModel> =
+    fun catsListDataSource(useCase: GetCatsListUseCase): RxPositionalDataSource<CatModel> =
         CatsListDataSource(useCase)
 
     @Provides

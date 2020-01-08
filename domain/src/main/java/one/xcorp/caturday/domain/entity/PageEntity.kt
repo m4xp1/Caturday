@@ -1,7 +1,7 @@
 package one.xcorp.caturday.domain.entity
 
 data class PageEntity<T>(
-    val startPosition: Int,
-    val totalCount: Int,
-    val items: List<T>
+    val items: List<T>,
+    val position: Int,
+    val totalCount: Int
 )

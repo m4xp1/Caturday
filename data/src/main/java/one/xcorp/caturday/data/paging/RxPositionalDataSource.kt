@@ -1,29 +1,28 @@
 package one.xcorp.caturday.data.paging
 
 import androidx.paging.PositionalDataSource
-import one.xcorp.caturday.domain.entity.StateEntity
-import one.xcorp.caturday.domain.entity.StateEntity.*
+import one.xcorp.caturday.data.paging.RxPositionalDataSource.State.*
 import rx.Observable
-import rx.Observable.just
 import rx.Single
+import rx.Single.just
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.subjects.BehaviorSubject
 import rx.subjects.PublishSubject
 
-abstract class RxPositionalDataSource<T, R> : PositionalDataSource<T>() {
+abstract class RxPositionalDataSource<T> : PositionalDataSource<T>() {
 
     private val unsubscribeSubject = BehaviorSubject.create<Unit>()
 
-    private val loadSubject = PublishSubject.create<Request>()
+    private val loadSubject = PublishSubject.create<Running<T>>()
     private val loadObservable = loadSubject
-        .concatMap { request ->
-            just<StateEntity<Info, R>>(Running(request.toInfo())).concatWith(
-                loadDataSingle(request).toObservable()
-                    .map<StateEntity<Info, R>> { Success(it) }
+        .concatMap<State<T>> { running ->
+            just<State<T>>(running).concatWith(
+                loadData(running.size, running.position, running.isInitial)
+                    .map<State<T>> { it }
                     .onErrorReturn {
                         Failed(it) {
-                            loadSubject.onNext(request)
+                            loadSubject.onNext(running)
                         }
                     }
             )
@@ -37,37 +36,72 @@ abstract class RxPositionalDataSource<T, R> : PositionalDataSource<T>() {
         loadSubscription = loadObservable.connect()
     }
 
-    fun observeState(): Observable<StateEntity<Info, R>> = loadObservable
+    fun observeLoading(): Observable<State<T>> = loadObservable
         .takeUntil(unsubscribeSubject)
         .observeOn(AndroidSchedulers.mainThread())
 
-    protected fun loadData(request: Request, callback: R.() -> Unit) {
-        loadObservable.doOnSubscribe { loadSubject.onNext(request) }
-            .takeUntil(unsubscribeSubject)
-            .takeFirst { it is Success }
-            .map { it as Success<R> }
-            .toBlocking()
-            .subscribe {
-                callback(it.result)
+    final override fun loadInitial(
+        params: LoadInitialParams,
+        callback: LoadInitialCallback<T>
+    ) {
+        loadData(params.requestedLoadSize, params.requestedStartPosition, true) {
+            if (totalCount == null) {
+                callback.onResult(items, position)
+            } else {
+                callback.onResult(items, position, totalCount)
             }
+        }
     }
 
-    protected abstract fun loadDataSingle(request: Request): Single<R>
+    final override fun loadRange(params: LoadRangeParams, callback: LoadRangeCallback<T>) {
+        loadData(params.loadSize, params.startPosition, false) {
+            callback.onResult(items)
+        }
+    }
+
+    private fun loadData(
+        size: Int,
+        position: Int,
+        isInitial: Boolean,
+        callback: Success<T>.() -> Unit
+    ) {
+        loadObservable
+            .doOnSubscribe { loadSubject.onNext(Running(size, position, isInitial)) }
+            .takeUntil(unsubscribeSubject)
+            .takeFirst { it is Success }
+            .map { it as Success<T> }
+            .toBlocking()
+            .subscribe(callback)
+    }
+
+    protected abstract fun loadData(
+        size: Int,
+        position: Int,
+        isInitial: Boolean
+    ): Single<Success<T>>
 
     override fun invalidate() {
         loadSubscription.unsubscribe()
         super.invalidate()
     }
 
-    data class Info(
-        val isInitial: Boolean
-    )
+    sealed class State<T> {
 
-    protected inner class Request(
-        val size: Int,
-        val position: Int,
-        val isInitial: Boolean
-    )
+        data class Running<T>(
+            val size: Int,
+            val position: Int,
+            val isInitial: Boolean
+        ) : State<T>()
 
-    private fun Request.toInfo() = Info(isInitial)
+        data class Failed<T>(
+            val error: Throwable,
+            val retry: () -> Unit
+        ) : State<T>()
+
+        data class Success<T>(
+            val items: List<T>,
+            val position: Int,
+            val totalCount: Int?
+        ) : State<T>()
+    }
 }
