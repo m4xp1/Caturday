@@ -4,5 +4,5 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class CatsListState(
-    override val initialKey: Int
+    override val initialPosition: Int
 ) : CatsListContract.State

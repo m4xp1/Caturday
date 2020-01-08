@@ -18,7 +18,7 @@ interface CatsListContract {
 
     interface State : BaseState {
 
-        val initialKey: Int
+        val initialPosition: Int
     }
 
     interface Presenter : BasePresenter<View, State> {
