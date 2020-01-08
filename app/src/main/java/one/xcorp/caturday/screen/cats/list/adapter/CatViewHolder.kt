@@ -13,13 +13,14 @@ class CatViewHolder private constructor(
     view: View
 ) : ViewHolder(view) {
 
+    private val glide = GlideApp.with(itemView.context)
+
     fun bindTo(catModel: CatModel?) {
-        if (catModel == null) {
-            itemView.imageView.setImageDrawable(null)
-        } else {
-            GlideApp.with(itemView.context)
-                .load(catModel.image)
-                .into(itemView.imageView)
+        glide.clear(itemView.imageView)
+        itemView.imageView.setImageDrawable(null)
+
+        if (catModel != null) {
+            glide.load(catModel.image).into(itemView.imageView)
         }
     }
 
