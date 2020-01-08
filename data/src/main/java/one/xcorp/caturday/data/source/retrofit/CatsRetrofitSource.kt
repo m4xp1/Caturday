@@ -10,9 +10,7 @@ import one.xcorp.caturday.domain.entity.PageEntity
 import rx.Single
 import rx.schedulers.Schedulers
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
 internal class CatsRetrofitSource @Inject constructor(
     private val catsApi: CatsRetrofitApi
 ) {

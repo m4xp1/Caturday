@@ -6,10 +6,8 @@ import one.xcorp.caturday.domain.entity.PageEntity
 import one.xcorp.caturday.domain.repository.CatsRepository
 import rx.Single
 import javax.inject.Inject
-import javax.inject.Singleton
 import kotlin.math.max
 
-@Singleton
 class GetCatsListUseCase @Inject constructor(
     private val catsRepository: CatsRepository
 ) {
