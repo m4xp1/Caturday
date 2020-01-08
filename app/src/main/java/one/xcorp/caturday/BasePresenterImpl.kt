@@ -1,5 +1,6 @@
 package one.xcorp.caturday
 
+import rx.lang.kotlin.plusAssign
 import rx.subscriptions.CompositeSubscription
 
 abstract class BasePresenterImpl<V : BaseView, S : BaseState> : BasePresenter<V, S> {
@@ -7,7 +8,12 @@ abstract class BasePresenterImpl<V : BaseView, S : BaseState> : BasePresenter<V,
     protected var view: V? = null
         private set
 
-    protected val compositeSubscription = CompositeSubscription()
+    protected val presenterSubscriptions = CompositeSubscription()
+    protected val viewSubscriptions = CompositeSubscription()
+
+    init {
+        presenterSubscriptions += viewSubscriptions
+    }
 
     override fun attach(view: V) {
         this.view = view
@@ -18,10 +24,11 @@ abstract class BasePresenterImpl<V : BaseView, S : BaseState> : BasePresenter<V,
     }
 
     override fun detach() {
-        this.view = null
+        viewSubscriptions.clear()
+        view = null
     }
 
     override fun dispose() {
-        compositeSubscription.unsubscribe()
+        presenterSubscriptions.unsubscribe()
     }
 }
