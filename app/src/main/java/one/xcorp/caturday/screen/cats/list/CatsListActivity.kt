@@ -51,7 +51,6 @@ class CatsListActivity : BaseActivity(), CatsListContract.View {
         val spanCount = resources.getInteger(R.integer.span_count)
 
         recyclerView.layoutManager = GridLayoutManager(this, spanCount)
-        recyclerView.adapter = adapter
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -77,6 +76,10 @@ class CatsListActivity : BaseActivity(), CatsListContract.View {
 
     override fun showCatsList(list: PagedList<CatModel>) {
         adapter.submitList(list)
+
+        if (recyclerView.adapter == null) {
+            recyclerView.adapter = adapter
+        }
     }
 
     override fun onDestroy() {
