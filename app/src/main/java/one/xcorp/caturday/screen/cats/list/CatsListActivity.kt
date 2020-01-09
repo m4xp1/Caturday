@@ -1,7 +1,6 @@
 package one.xcorp.caturday.screen.cats.list
 
 import android.os.Bundle
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.paging.PagedList
@@ -15,6 +14,7 @@ import one.xcorp.caturday.R
 import one.xcorp.caturday.dagger.CatsListComponent
 import one.xcorp.caturday.dagger.holder.injectWith
 import one.xcorp.caturday.dagger.injector.Injector
+import one.xcorp.caturday.extension.chaneSystemWindowTopInset
 import one.xcorp.caturday.screen.cats.list.adapter.CatsListAdapter
 import one.xcorp.caturday.screen.cats.list.model.CatModel
 import one.xcorp.caturday.screen.cats.list.model.StateModel
@@ -52,6 +52,10 @@ class CatsListActivity : BaseActivity(), CatsListContract.View {
         val spanCount = resources.getInteger(R.integer.span_count)
 
         recyclerView.layoutManager = GridLayoutManager(this, spanCount)
+
+        recyclerView.setOnApplyWindowInsetsListener { _, insets ->
+            recyclerView.onApplyWindowInsets(insets.chaneSystemWindowTopInset(0))
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -97,9 +101,5 @@ class CatsListActivity : BaseActivity(), CatsListContract.View {
 
         private const val KEY_CATS_LIST_CONTRACT_PRESENTER_STATE =
             "CatsListContract.Presenter.State"
-    }
-
-    fun testClick(view: View) {
-        presenter.invalidate()
     }
 }
