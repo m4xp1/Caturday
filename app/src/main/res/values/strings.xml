@@ -8,5 +8,6 @@
     <string name="message_check_network_connection">
         Нет интернет подключения
     </string>
+    <string name="refresh_button">Обновить</string>
     <string name="retry_button">Повторить</string>
 </resources>

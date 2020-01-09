@@ -1,6 +1,8 @@
 package one.xcorp.caturday.screen.cats.list
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.paging.PagedList
@@ -34,6 +36,7 @@ class CatsListActivity : BaseActivity(), CatsListContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cats_list)
+        setSupportActionBar(R.id.toolbarView)
 
         configureRecyclerView()
 
@@ -47,6 +50,19 @@ class CatsListActivity : BaseActivity(), CatsListContract.View {
                 savedInstanceState?.getParcelable(KEY_CATS_LIST_CONTRACT_PRESENTER_STATE)
             )
         }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.menu_cats_list, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.refreshAction -> {
+            presenter.invalidate(); true
+        }
+        else -> super.onOptionsItemSelected(item)
+    }
 
     private fun configureRecyclerView() {
         val spanCount = resources.getInteger(R.integer.span_count)
