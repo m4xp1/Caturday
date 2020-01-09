@@ -70,10 +70,7 @@ class CatsListActivity : BaseActivity(), CatsListContract.View {
         recyclerView.layoutManager = GridLayoutManager(this, spanCount)
 
         recyclerView.setOnApplyWindowInsetsListener { _, insets ->
-            recyclerView.setPaddingBottom(
-                insets.systemWindowInsetBottom
-            )
-            insets
+            insets?.apply { recyclerView.setPaddingBottom(systemWindowInsetBottom) }
         }
     }
 
