@@ -14,6 +14,7 @@ import rx.lang.kotlin.plusAssign
 import rx.schedulers.Schedulers
 import rx.subjects.PublishSubject
 import java.util.concurrent.Executors.newSingleThreadExecutor
+import java.util.concurrent.atomic.AtomicReference
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -22,6 +23,8 @@ class CatsListPresenter @Inject constructor(
     private val savedInstanceState: CatsListContract.State?,
     private val catsListDataSourceProvider: Provider<RxPositionalDataSource<CatModel>>
 ) : BasePresenterImpl<CatsListContract.View, CatsListContract.State>(), CatsListContract.Presenter {
+
+    private val catsList = AtomicReference<PagedList<CatModel>?>()
 
     private val catsListStateSubject = PublishSubject.create<StateModel>()
     private val catsListStateObservable = catsListStateSubject
@@ -35,10 +38,7 @@ class CatsListPresenter @Inject constructor(
         .observeOn(Schedulers.io())
         .map<PagedList<CatModel>> { createCatsList(it) }
         .observeOn(AndroidSchedulers.mainThread())
-        .doOnNext { catsList = it }
         .replay(1)
-
-    private var catsList: PagedList<CatModel>? = null
 
     init {
         presenterSubscriptions += catsListStateObservable.connect()
@@ -67,11 +67,13 @@ class CatsListPresenter @Inject constructor(
             .setPageSize(pageSize)
             .build()
 
-        return PagedList.Builder<Int, CatModel>(createCatsListDataSource(), config)
+        val list = PagedList.Builder<Int, CatModel>(createCatsListDataSource(), config)
             .setInitialKey(initialKey)
             .setFetchExecutor(newSingleThreadExecutor())
             .setNotifyExecutor(getMainExecutor(applicationContext))
             .build()
+
+        return list.apply { catsList.set(this) }
     }
 
     private fun createCatsListDataSource(): RxPositionalDataSource<CatModel> {
@@ -89,9 +91,9 @@ class CatsListPresenter @Inject constructor(
     }
 
     private fun getInitialPosition(): Int =
-        catsList?.lastKey as? Int ?: savedInstanceState?.initialPosition ?: 0
+        catsList.get()?.lastKey as? Int ?: savedInstanceState?.initialPosition ?: 0
 
     override fun invalidate() {
-        catsList?.dataSource?.invalidate()
+        catsList.get()?.dataSource?.invalidate()
     }
 }
