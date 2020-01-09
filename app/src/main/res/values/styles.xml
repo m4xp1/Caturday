@@ -34,7 +34,7 @@
     </style>
 
     <style name="Snackbar.TextView" parent="@style/Widget.MaterialComponents.TextView">
-        <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
         <item name="android:textAppearance">?attr/textAppearanceBody2</item>
     </style>
 
