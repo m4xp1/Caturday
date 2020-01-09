@@ -20,6 +20,12 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
         super.onCreate(savedInstanceState)
     }
 
+    open fun onInject(savedInstanceState: Bundle?): ComponentHolder<*, *>? {
+        return null
+    }
+
+    override fun getContext(): Context = this
+
     fun setSupportActionBar(@IdRes id: Int = 0, block: (ActionBar.(Toolbar) -> Unit)? = null) {
         toolBar = findViewById<Toolbar?>(id)
         setSupportActionBar(toolBar)
@@ -31,12 +37,6 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
             }
         }
     }
-
-    open fun onInject(savedInstanceState: Bundle?): ComponentHolder<*, *>? {
-        return null
-    }
-
-    override fun getContext(): Context = this
 
     override fun onDestroy() {
         if (isFinishing) {
