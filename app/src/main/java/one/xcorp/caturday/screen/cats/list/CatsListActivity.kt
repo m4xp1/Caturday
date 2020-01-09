@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.core.view.updatePadding
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
@@ -16,7 +17,6 @@ import one.xcorp.caturday.R
 import one.xcorp.caturday.dagger.CatsListComponent
 import one.xcorp.caturday.dagger.holder.injectWith
 import one.xcorp.caturday.dagger.injector.Injector
-import one.xcorp.caturday.extension.setPaddingBottom
 import one.xcorp.caturday.screen.cats.list.adapter.CatsListAdapter
 import one.xcorp.caturday.screen.cats.list.model.CatModel
 import one.xcorp.caturday.screen.cats.list.model.StateModel
@@ -70,7 +70,7 @@ class CatsListActivity : BaseActivity(), CatsListContract.View {
         recyclerView.layoutManager = GridLayoutManager(this, spanCount)
 
         recyclerView.setOnApplyWindowInsetsListener { _, insets ->
-            insets?.apply { recyclerView.setPaddingBottom(systemWindowInsetBottom) }
+            insets?.apply { recyclerView.updatePadding(bottom = systemWindowInsetBottom) }
         }
     }
 
