@@ -1,0 +1,6 @@
+ext {
+    cats_api = [
+            key: "2db95639-de72-477f-9133-248b66d9cb3e",
+            url: "https://api.thecatapi.com/v1/",
+    ]
+}

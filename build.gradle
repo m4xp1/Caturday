@@ -1,3 +1,5 @@
+apply from: 'properties.gradle'
+
 buildscript {
     apply from: 'versions.gradle'
 
