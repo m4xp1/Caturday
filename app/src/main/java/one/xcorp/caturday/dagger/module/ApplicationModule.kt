@@ -5,7 +5,7 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import one.xcorp.caturday.dagger.CatsListComponent
-import ru.cardsmobile.mw3.barch.presentation.di.scope.ApplicationScope
+import one.xcorp.caturday.dagger.scope.ApplicationScope
 
 @Module
 class ApplicationModule {

@@ -5,7 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import one.xcorp.caturday.dagger.module.ApplicationModule
 import one.xcorp.caturday.data.dagger.DataComponent
-import ru.cardsmobile.mw3.barch.presentation.di.scope.ApplicationScope
+import one.xcorp.caturday.dagger.scope.ApplicationScope
 
 @ApplicationScope
 @Component(

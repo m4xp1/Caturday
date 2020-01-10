@@ -1,4 +1,4 @@
-package ru.cardsmobile.mw3.barch.presentation.di.scope
+package one.xcorp.caturday.dagger.scope
 
 import javax.inject.Scope
 

@@ -6,7 +6,7 @@ import one.xcorp.caturday.dagger.holder.SingleComponentHolder
 import one.xcorp.caturday.dagger.module.CatsListModule
 import one.xcorp.caturday.screen.cats.list.CatsListActivity
 import one.xcorp.caturday.screen.cats.list.CatsListContract
-import ru.cardsmobile.mw3.barch.presentation.di.scope.ActivityScope
+import one.xcorp.caturday.dagger.scope.ActivityScope
 
 @ActivityScope
 @Subcomponent(
