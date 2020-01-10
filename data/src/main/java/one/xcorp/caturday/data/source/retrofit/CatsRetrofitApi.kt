@@ -17,8 +17,6 @@ internal interface CatsRetrofitApi {
 
     companion object {
 
-        const val URL_BASE = "https://api.thecatapi.com/v1/"
-
         const val HEADER_X_API_KEY = "x-api-key"
         const val HEADER_PAGINATION_COUNT = "pagination-count"
 

@@ -27,6 +27,7 @@ android {
     }
     applicationVariants.all { variant ->
         variant.buildConfigField 'String', 'CATS_API_KEY', cats_api_key
+        variant.buildConfigField 'String', 'CATS_API_URL', cats_api_url
     }
 }
 

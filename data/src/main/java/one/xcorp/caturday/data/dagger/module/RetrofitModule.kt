@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import one.xcorp.caturday.data.dagger.qualifier.CatsApiKey
+import one.xcorp.caturday.data.CatsApiConfiguration
 import one.xcorp.caturday.data.source.retrofit.CatsRetrofitApi
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
@@ -36,18 +36,18 @@ internal class RetrofitModule {
     @Provides
     @Singleton
     fun provideCatsRetrofitApi(
-        @CatsApiKey apiKey: String,
+        configuration: CatsApiConfiguration,
         httpClientBuilder: OkHttpClient.Builder,
         retrofitBuilder: Retrofit.Builder
     ): CatsRetrofitApi {
         httpClientBuilder.addInterceptor {
             val request: Request = it.request().newBuilder()
-                .header(CatsRetrofitApi.HEADER_X_API_KEY, apiKey)
+                .header(CatsRetrofitApi.HEADER_X_API_KEY, configuration.key)
                 .build()
             it.proceed(request)
         }
 
-        retrofitBuilder.baseUrl(CatsRetrofitApi.URL_BASE)
+        retrofitBuilder.baseUrl(configuration.url)
         retrofitBuilder.client(httpClientBuilder.build())
 
         return retrofitBuilder.build().create(CatsRetrofitApi::class.java)
