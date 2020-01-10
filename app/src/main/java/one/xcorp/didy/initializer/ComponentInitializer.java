@@ -1,4 +1,4 @@
-package one.xcorp.caturday.dagger.initializer;
+package one.xcorp.didy.initializer;
 
 import androidx.annotation.NonNull;
 

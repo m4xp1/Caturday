@@ -15,8 +15,8 @@ import one.xcorp.caturday.Application.Dependencies.applicationComponent
 import one.xcorp.caturday.BaseActivity
 import one.xcorp.caturday.R
 import one.xcorp.caturday.dagger.CatsListComponent
-import one.xcorp.caturday.dagger.holder.injectWith
-import one.xcorp.caturday.dagger.injector.Injector
+import one.xcorp.didy.holder.injectWith
+import one.xcorp.didy.injector.Injector
 import one.xcorp.caturday.screen.cats.list.adapter.CatsListAdapter
 import one.xcorp.caturday.screen.cats.list.model.CatModel
 import one.xcorp.caturday.screen.cats.list.model.StateModel

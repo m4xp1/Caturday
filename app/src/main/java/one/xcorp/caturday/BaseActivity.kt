@@ -6,7 +6,7 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import one.xcorp.caturday.dagger.holder.ComponentHolder
+import one.xcorp.didy.holder.ComponentHolder
 
 abstract class BaseActivity : AppCompatActivity(), BaseView {
 

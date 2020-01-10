@@ -1,4 +1,4 @@
-package one.xcorp.caturday.dagger.injector;
+package one.xcorp.didy.injector;
 
 import androidx.annotation.NonNull;
 

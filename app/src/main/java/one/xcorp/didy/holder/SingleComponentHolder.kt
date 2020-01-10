@@ -1,4 +1,4 @@
-package one.xcorp.caturday.dagger.holder
+package one.xcorp.didy.holder
 
 abstract class SingleComponentHolder<Factory : Any, Component : Any>(
     private val factory: Factory

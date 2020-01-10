@@ -1,4 +1,4 @@
-package one.xcorp.caturday.dagger.holder
+package one.xcorp.didy.holder
 
 interface ComponentHolder<Factory : Any, Component : Any> {
 

@@ -2,7 +2,7 @@ package one.xcorp.caturday.dagger
 
 import dagger.BindsInstance
 import dagger.Subcomponent
-import one.xcorp.caturday.dagger.holder.SingleComponentHolder
+import one.xcorp.didy.holder.SingleComponentHolder
 import one.xcorp.caturday.dagger.module.CatsListModule
 import one.xcorp.caturday.screen.cats.list.CatsListActivity
 import one.xcorp.caturday.screen.cats.list.CatsListContract

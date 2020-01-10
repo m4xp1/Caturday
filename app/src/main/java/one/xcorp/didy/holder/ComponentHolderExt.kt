@@ -1,7 +1,7 @@
-package one.xcorp.caturday.dagger.holder
+package one.xcorp.didy.holder
 
-import one.xcorp.caturday.dagger.initializer.ComponentInitializer
-import one.xcorp.caturday.dagger.injector.Injector
+import one.xcorp.didy.initializer.ComponentInitializer
+import one.xcorp.didy.injector.Injector
 
 fun <Factory : Any, Component : Any> ComponentHolder<Factory, Component>.getComponent(
     initializer: ComponentInitializer<Factory, Component>
