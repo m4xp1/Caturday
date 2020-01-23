@@ -17,7 +17,6 @@ class CatViewHolder private constructor(
 
     fun bindTo(catModel: CatModel?) {
         glide.clear(itemView.imageView)
-        itemView.imageView.setImageDrawable(null)
 
         if (catModel != null) {
             glide.load(catModel.image).into(itemView.imageView)
